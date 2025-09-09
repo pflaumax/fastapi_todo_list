@@ -11,11 +11,8 @@ app = FastAPI(
 db_tasks_storage = {}
 current_id = 1
 
-def get_task_or_404(task_id: int) -> Task:
-    try:
-        return db_tasks_storage[task_id]
-    except KeyError:
-        raise HTTPException(status_code=404, detail="Task not found")
+def raise_exception(status_code: int, message: str):
+        raise HTTPException(status_code=status_code, detail=message)
 
 @app.get("/")
 def welcome_page():
@@ -46,7 +43,9 @@ def create_task(task: TaskCreate):
 @app.put("/tasks/{task_id}", response_model=Task)
 def update_task(task_id: int, task_update: TaskUpdate):
     """Update an existing task"""
-    stored_task = get_task_or_404(task_id)
+    stored_task = db_tasks_storage.get(task_id)
+    if not stored_task:
+        raise_exception(404, "Task not found")
 
     if task_update.title is not None:
         stored_task.title = task_update.title
@@ -60,7 +59,10 @@ def update_task(task_id: int, task_update: TaskUpdate):
 @app.delete("/tasks/{task_id}")
 def delete_task(task_id: int):
     """Delete a task"""
-    deleted_task = get_task_or_404(task_id)
-    db_tasks_storage.pop(task_id)
+    task_to_delete = db_tasks_storage.get(task_id)
+    if not task_to_delete:
+        raise_exception(404, "Task not found")
 
-    return {"message": f"Task '{deleted_task.title}' deleted successfully"}
+    del db_tasks_storage[task_id]
+
+    return {"message": f"Task '{task_to_delete.title}' deleted successfully"}
