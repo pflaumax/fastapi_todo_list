@@ -1,12 +1,50 @@
-### Create task
+### Check if the server is running
+GET http://127.0.0.1:8000/
+
+### Get all tasks
+GET http://127.0.0.1:8000/tasks
+
+### Create task ONE
 POST http://127.0.0.1:8000/tasks
 Content-Type: application/json
 
 {
-  "title": "Learn FastAPI",
-  "description": "Check PyCharm HTTP Client",
+  "title": "ONE",
+  "description": "task one description",
   "completed": false
 }
 
-### Get all tasks
-GET http://127.0.0.1:8000/tasks
+### Create task TWO
+POST http://127.0.0.1:8000/tasks
+Content-Type: application/json
+
+{
+  "title": "TWO",
+  "description": "task two description",
+  "completed": false
+}
+
+### Update task ONE
+PUT http://127.0.0.1:8000/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Updated ONE",
+  "completed": true
+}
+
+### Try to update not existing task
+PUT http://127.0.0.1:8000/tasks/999
+Content-Type: application/json
+
+{
+  "title": "Updated 999",
+  "completed": true
+}
+
+
+### Delete task TWO
+DELETE http://127.0.0.1:8000/tasks/2
+
+### Try to delete not existing task
+DELETE http://127.0.0.1:8000/tasks/999

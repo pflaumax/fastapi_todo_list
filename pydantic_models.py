@@ -15,3 +15,10 @@ class TaskCreate(BaseModel):
     title: str
     description: Optional[str] = None
     completed: bool = False
+
+
+class TaskUpdate(BaseModel):
+    """Model for updating an existing task"""
+    title: Optional[str] = None
+    description: Optional[str] = None
+    completed: Optional[bool] = None
