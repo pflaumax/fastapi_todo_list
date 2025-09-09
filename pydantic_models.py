@@ -3,7 +3,7 @@ from typing import Optional
 
 
 class Task(BaseModel):
-    """Model for a task with ID"""
+    """Model for a task with ID after saving to the database"""
     id: int
     title: str
     description: Optional[str] = None

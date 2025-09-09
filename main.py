@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, status
 from pydantic_models import Task, TaskCreate, TaskUpdate
 
 
@@ -26,7 +26,7 @@ def get_tasks():
     """Retrieve all tasks"""
     return list(db_tasks_storage.values())
 
-@app.post("/tasks", response_model=Task)
+@app.post("/tasks", response_model=Task, status_code=status.HTTP_201_CREATED)
 def create_task(task: TaskCreate):
     """Create a new task"""
     global current_id
