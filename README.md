@@ -84,8 +84,15 @@ Update task
 }
 ```
 
-### DELETE /tasks/{id}
+### DELETE /tasks/{task_id}
 Delete task
+**body:**
+```json
+{
+  "message": "Task 'ONE' deleted successfully"
+}
+```
+
 
 ## Unit Tests
 
