@@ -18,7 +18,7 @@ def get_task_or_404(task_id: int) -> Task:
         raise HTTPException(status_code=404, detail="Task not found")
 
 @app.get("/")
-def read_root():
+def welcome_page():
     return {"message": "Welcome to the API"}
 
 @app.get("/tasks", response_model=list[Task])
