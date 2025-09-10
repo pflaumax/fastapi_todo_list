@@ -1,19 +1,19 @@
 from fastapi.testclient import TestClient
-import main
+import app
 import pytest
 
 
 @pytest.fixture
 def client():
     """Create a client for the app"""
-    return TestClient(main.app)
+    return TestClient(app.app)
 
 
 @pytest.fixture(autouse=True)
 def reset_db():
     """Reset the list database before each test"""
-    main.db_tasks_storage.clear()
-    main.current_id = 1
+    app.db_tasks_storage.clear()
+    app.current_id = 1
 
 
 def test_get_empty_tasks(client):
