@@ -1,31 +1,44 @@
 # TODO List with FastAPI
+
 A simple TODO list application built with FastAPI, 
 using an in-memory dictionary as a database, 
 Pydantic models for data validation, and comprehensive unit tests.
 
-## Installation
+## Project structure
 
-1. **Create project:**
+```
+todo_list_fast_api/
+├── main.py                 # FastAPI application
+├── pydantic_models.py      # Pydantic models for validation
+├── requirements.txt        # Python dependencies
+├── requests.http           # Example HTTP requests for testing
+├── test_main.py            # Unit tests
+├── README.md               # This file
+```
+
+## How to run
+
+1. **Clone and go to the folder:**
    ```bash
-   mkdir todo_list_fastapi
+   git clone https://github.com/pflaumax/fastapi_todo_list.git
    cd todo_list_fastapi
    ```
 
-2. **Create virtual environment:**
+2. **Create a virtual environment:**
    ```bash
-   python -m venv venv
+   python -m venv .venv
    ```
 
 3. **Activate virtual environment:**
    
    **Windows:**
    ```bash
-   venv\Scripts\activate
+   .venv\Scripts\activate
    ```
    
    **Mac/Linux:**
    ```bash
-   source venv/bin/activate
+   source .venv/bin/activate
    ```
 
 4. **Install dependencies:**
