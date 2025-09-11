@@ -128,3 +128,8 @@ pytest test_app.py -v
 ## Stop
 
 Quit uvicorn server by Press `CTRL+C`
+
+## Feature updates
+* Use a persistent database
+* Add Dockerfile and GitHub Actions CI
+* Add logging
