@@ -8,11 +8,11 @@ Pydantic models for data validation, and comprehensive unit tests.
 
 ```
 todo_list_fast_api/
-├── main.py                 # FastAPI application
+├── app.py                  # FastAPI application
 ├── pydantic_models.py      # Pydantic models for validation
 ├── requirements.txt        # Python dependencies
 ├── requests.http           # Example HTTP requests for testing
-├── test_main.py            # Unit tests
+├── test_app.py             # Unit tests
 ├── README.md               # This file
 ```
 
