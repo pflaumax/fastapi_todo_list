@@ -49,19 +49,30 @@ todo_list_fast_api/
 ## Start
 
 ```bash
-uvicorn main:app --reload
+uvicorn app:app --reload
 ```
-API will available in address: http://127.0.0.1:8000
+ `--reload` is optional and recommended only for development,
+as it automatically restarts the server when code changes.
+Alternatively, you can start the server with simply:
+```bash
+uvicorn app:app
+```
+
+API will available in address: http://127.0.0.1:8000 with message:
+```json
+{"message":"Welcome to the API"}
+```
 
 ## Documentation
 
-FastAPI automatically generates interactive documentation.:
+FastAPI automatically generates interactive documentation:
 - Swagger UI: http://127.0.0.1:8000/docs
 - ReDoc: http://127.0.0.1:8000/redoc
 
-## Endpoints
+## Use `requests.http` file for example requests
 
-### Welcome page http://127.0.0.1:8000/ 
+## Endpoints
+ Welcome page http://127.0.0.1:8000/ 
 
 ### GET /tasks
 Get all tasks **response:**
@@ -111,7 +122,9 @@ Delete task
 
 Run tests with:
 ```bash
-pytest test_main.py -v
+pytest test_app.py -v
 ```
 
-## Use `requests.http` file for example requests
+## Stop
+
+Quit uvicorn server by Press `CTRL+C`
